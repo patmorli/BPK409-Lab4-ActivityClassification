@@ -126,7 +126,7 @@ def LabelData(file_name):
     ax2.plot(df.t, df.activity, color = 'black')
     
 
-    plt.plot(df.t[df.activity != 'Standing'], df.x[df.activity != 'Standing'], color = 'green')
+    #plt.plot(df.t[df.activity != 'Standing'], df.x[df.activity != 'Standing'], color = 'green')
     
     # Create target Directory if don't exist and save data
     if not os.path.exists(save_path):
