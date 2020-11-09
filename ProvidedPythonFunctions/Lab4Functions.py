@@ -168,7 +168,7 @@ def import_data():
     
     
     # load one file, delete first column, add an 'id' column, and append to the big dataframe
-    num_files = len([f for f in os.listdir(load_path)if os.path.isfile(os.path.join(load_path, f))])
+    num_files = len(glob.glob1(load_path,"*.csv"))
     all_data = pd.DataFrame(columns = column_names)
     os.chdir(load_path)
     for i in range(num_files):
