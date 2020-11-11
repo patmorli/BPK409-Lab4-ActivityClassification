@@ -79,7 +79,7 @@ void loop() {
     // Raw of acceleration of x, y, and z directions
     x = accel.getX();
     y = accel.getY();
-    z = accel.getY();
+    z = accel.getZ();
   }
   if (millis() >= last_time + tc) {
     last_time = millis();
