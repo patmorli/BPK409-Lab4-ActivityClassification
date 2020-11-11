@@ -84,11 +84,11 @@ void loop() {
   if (millis() >= last_time + tc) {
     last_time = millis();
     myLog.append(filename);
-    myLog.print(x/512);
+    myLog.print(x/256);
     myLog.print("\t");
-    myLog.print(y/512);
+    myLog.print(y/256);
     myLog.print("\t");
-    myLog.print(z/512);
+    myLog.print(z/256);
     myLog.print("\t");
     myLog.print(last_time);
     myLog.println();
