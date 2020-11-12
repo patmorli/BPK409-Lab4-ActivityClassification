@@ -180,7 +180,7 @@ def import_data():
         df['id'] = sub_id
         all_data = all_data.append(df)
         print('File loaded: ' + file)
-         
+    all_data = all_data.reset_index(drop = True)     
     return all_data
 
 """Plot a confusion matrix
@@ -223,11 +223,7 @@ def create_model(X_train, y_train):
     model.add(keras.layers.Dropout(rate=0.5))
     model.add(keras.layers.Dense(units=128, activation='relu'))
     model.add(keras.layers.Dense(y_train.shape[1], activation='softmax'))
-    
-    model.compile(
-      loss='categorical_crossentropy',
-      optimizer='adam',
-      metrics=['acc']
-    )
+    model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
+  
     return model
     
