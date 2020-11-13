@@ -120,7 +120,7 @@ def LabelData(file_name):
     ax.plot(df.t, df.y)
     ax.plot(df.t, df.z)
     ax.set_ylabel("Accelerations (G)")
-    ax.set_xlabel("Time (s)")
+    ax.set_xlabel("Time (ms)")
     
     ax2=ax.twinx()
     ax2.plot(df.t, df.activity, color = 'black')
