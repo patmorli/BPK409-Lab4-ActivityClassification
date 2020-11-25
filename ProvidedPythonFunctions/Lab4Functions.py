@@ -153,7 +153,15 @@ where N is the ID of the subject or dataset
 Output: a datafile with the data of all subjects together
 """
 def import_data():
-    column_names = [
+    column_names_df = [
+      'x',
+      'y',
+      'z',
+      't',
+      'activity'
+    ]
+    
+    column_names_alldata = [
       'x',
       'y',
       'z',
@@ -169,17 +177,18 @@ def import_data():
     
     # load one file, delete first column, add an 'id' column, and append to the big dataframe
     num_files = len(glob.glob1(load_path,"*.csv"))
-    all_data = pd.DataFrame(columns = column_names)
+    all_data = pd.DataFrame(columns = column_names_alldata)
     os.chdir(load_path)
     for i in range(num_files):
         file = 'LabelledData'+ str(i+1) + '.csv'
-        df = pd.read_csv(load_path + file)
-        df = df.drop(df.columns[0], axis=1) # delete first column
+        df = pd.read_csv(load_path + file, names = column_names_df, skiprows= 25, skipfooter = 25, engine = 'python')
+        #df = df.drop(df.columns[0], axis=1) # delete first column
         sub_id = np.empty(len(df))
         sub_id[:] = i + 1
         df['id'] = sub_id
         all_data = all_data.append(df)
         print('File loaded: ' + file)
+    all_data = all_data.dropna()
     all_data = all_data.reset_index(drop = True)     
     return all_data
 
